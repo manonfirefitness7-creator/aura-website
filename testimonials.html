@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories of Transformation | A.U.R.A. Testimonials</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            nav button {
+                display: block;
+            }
+        }
+
+        /* Banner */
+        .banner {
+            background: linear-gradient(135deg, #f0e6ff 0%, #ffe6f0 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .banner p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 1.75rem;
+            }
+
+            .banner p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Testimonials Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .testimonial-card button {
+            width: 100%;
+            border: none;
+            background: none;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .testimonial-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: #e8e8e8;
+        }
+
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .testimonial-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .testimonial-info {
+            padding: 1.5rem;
+        }
+
+        .testimonial-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .watch-story {
+            font-size: 0.85rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Modal */
+        dialog[open] {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border: none;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: #e8e8e8;
+        }
+
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            dialog[open] {
+                padding: 1rem;
+            }
+
+            .modal-content {
+                width: 100%;
+            }
+
+            .modal-close {
+                top: -50px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="nav-logo">A.U.R.A</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/dr-maartje-introduction">Introduction</a></li>
+            <li><a href="/testimonials.html">Testimonials</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/terms">Terms & Conditions</a></li>
+            <li><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3O7KefBwE3UZIq5SDpqg74SlFNtDnpglnhv8z5ksnSE-9UsKdWfBF8bxzP5youejN5LiOpPQS1">Book a Call</a></li>
+        </ul>
+        <button style="display: none;">Toggle menu</button>
+    </nav>
+
+    <!-- Banner -->
+    <header class="banner">
+        <h1>Real women. Real breakthroughs.</h1>
+        <p>Hear directly from women who chose to awaken, unlearn, rewire, and step into a new season of their lives.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Testimonials Grid -->
+        <section class="testimonials-grid">
+
+            <!-- Jasmine Montoya -->
+            <article class="testimonial-card">
+                <button type="button" data-video="https://www.youtube.com/embed/cdF62E3jSrA" aria-label="Play Jasmine Montoya's AURA transformation story">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/300x300?text=Jasmine+Montoya" alt="Jasmine Montoya">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </button>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Jasmine Montoya</div>
+                    <div class="watch-story">Watch her story</div>
+                </div>
+            </article>
+
+            <!-- Sarah Ressler -->
+            <article class="testimonial-card">
+                <button type="button" data-video="https://www.youtube.com/embed/c1vTgyEvR5w" aria-label="Play Sarah Ressler's AURA transformation story">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/300x300?text=Sarah+Ressler" alt="Sarah Ressler">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </button>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Sarah Ressler</div>
+                    <div class="watch-story">Watch her story</div>
+                </div>
+            </article>
+
+            <!-- Stephanie Redshirt -->
+            <article class="testimonial-card">
+                <button type="button" data-video="https://www.youtube.com/embed/Wuu06kIn7NA" aria-label="Play Stephanie Redshirt's AURA transformation story">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/300x300?text=Stephanie+Redshirt" alt="Stephanie Redshirt">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </button>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Stephanie Redshirt</div>
+                    <div class="watch-story">Watch her story</div>
+                </div>
+            </article>
+
+            <!-- Magaly Lares -->
+            <article class="testimonial-card">
+                <button type="button" data-video="https://www.youtube.com/embed/7apO5byPA5s" aria-label="Play Magaly Lares's AURA transformation story">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/300x300?text=Magaly+Lares" alt="Magaly Lares">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </button>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Magaly Lares</div>
+                    <div class="watch-story">Watch her story</div>
+                </div>
+            </article>
+
+            <!-- Mikaela Duce -->
+            <article class="testimonial-card">
+                <button type="button" data-video="https://www.youtube.com/embed/Bge_ryaHLgQ" aria-label="Play Mikaela Duce's AURA transformation story">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/300x300?text=Mikaela+Duce" alt="Mikaela Duce">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </button>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Mikaela Duce</div>
+                    <div class="watch-story">Watch her story</div>
+                </div>
+            </article>
+
+            <!-- Sabrina Piere -->
+            <article class="testimonial-card">
+                <button type="button" data-video="https://www.youtube.com/embed/sn2gyn8Sv3Y" aria-label="Play Sabrina Piere's AURA transformation story">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/300x300?text=Sabrina+Piere" alt="Sabrina Piere">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </button>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Sabrina Piere</div>
+                    <div class="watch-story">Watch her story</div>
+                </div>
+            </article>
+
+            <!-- Crystal Thomas -->
+            <article class="testimonial-card">
+                <button type="button" data-video="https://www.youtube.com/embed/RYW2ewteWKo" aria-label="Play Crystal Thomas's AURA transformation story">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/300x300?text=Crystal+Thomas" alt="Crystal Thomas">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </button>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Crystal Thomas</div>
+                    <div class="watch-story">Watch her story</div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Video Modal -->
+    <dialog aria-label="AURA transformation story">
+        <div class="modal-content">
+            <button class="modal-close" type="button" aria-label="Close video">✕</button>
+            <iframe class="modal-iframe" title="Testimonial video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer>
+        <div style="margin-bottom: 1.5rem;">
+            <a href="/" style="font-size: 1.2rem; font-weight: 600;">A.U.R.A</a>
+        </div>
+        <p>© All Rights Reserved 2026</p>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3O7KefBwE3UZIq5SDpqg74SlFNtDnpglnhv8z5ksnSE-9UsKdWfBF8bxzP5youejN5LiOpPQS1">Book a Call</a>
+            <a href="/team">Team</a>
+            <a href="/terms">T&C's</a>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const dialog = document.querySelector('dialog');
+        const closeButton = dialog.querySelector('.modal-close');
+        const iframe = dialog.querySelector('.modal-iframe');
+        const testimonialButtons = document.querySelectorAll('[data-video]');
+
+        testimonialButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const videoUrl = button.getAttribute('data-video');
+                iframe.src = videoUrl;
+                dialog.showModal();
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeButton.addEventListener('click', () => {
+            dialog.close();
+            iframe.src = '';
+            document.body.style.overflow = 'auto';
+        });
+
+        dialog.addEventListener('close', () => {
+            iframe.src = '';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside the content
+        dialog.addEventListener('click', (e) => {
+            if (e.target === dialog) {
+                dialog.close();
+                iframe.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && dialog.open) {
+                dialog.close();
+                iframe.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
