@@ -147,6 +147,9 @@ p { margin: 0; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1380px;
+  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  padding-right: clamp(1.25rem, 3vw, 2.5rem);
   height: 84px;
 }
 
@@ -160,19 +163,21 @@ p { margin: 0; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(0.9rem, 1.8vw, 2.25rem);
+  gap: clamp(0.65rem, 1.25vw, 1.5rem);
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-links a {
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
   text-transform: uppercase;
   color: var(--color-white-dim);
   transition: color 0.3s var(--ease);
 }
+.site-nav .nav-links .btn { padding: 0.8rem 1.45rem; }
 .nav-links a:hover { color: var(--color-gold-light); }
 
 .nav-toggle {
