@@ -480,6 +480,162 @@ body.modal-open { overflow: hidden; }
   .value-grid { grid-template-columns: 1fr; }
 }
 
+/* ============ AUDIENCE & PATTERNS ============ */
+.audience-section {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(201, 161, 91, 0.08), transparent 30%),
+    var(--color-bg);
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 3.25rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-line);
+}
+
+.audience-card {
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  background: linear-gradient(145deg, rgba(201, 161, 91, 0.045), rgba(255, 255, 255, 0.016)), var(--color-bg);
+}
+
+.audience-card h3 {
+  margin-bottom: 0.9rem;
+  color: var(--color-gold-light);
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+}
+
+.audience-card p {
+  color: var(--color-white-dim);
+  font-weight: 300;
+  line-height: 1.78;
+}
+
+.carrying-section {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(201, 161, 91, 0.08), transparent 32%),
+    var(--color-bg-raised);
+}
+
+.carrying-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.62fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.carrying-copy {
+  max-width: 760px;
+}
+
+.carrying-copy h2 {
+  margin: 0.85rem 0 1.2rem;
+  font-size: clamp(2.2rem, 4.5vw, 3.35rem);
+}
+
+.carrying-copy p:not(.eyebrow) {
+  color: var(--color-white-dim);
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+.carrying-copy p + p {
+  margin-top: 1rem;
+}
+
+.truth-panel,
+.trauma-panel {
+  border: 1px solid var(--color-line);
+  background: linear-gradient(145deg, rgba(201, 161, 91, 0.07), rgba(255, 255, 255, 0.018));
+}
+
+.truth-panel {
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  border-radius: 18px;
+}
+
+.truth-panel h3 {
+  margin-bottom: 1rem;
+  color: var(--color-gold-light);
+  font-size: clamp(1.55rem, 3vw, 2.05rem);
+}
+
+.truth-panel p {
+  color: var(--color-white-dim);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.pattern-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.pattern-copy h2 {
+  margin: 0.85rem 0 1.2rem;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+}
+
+.pattern-copy p {
+  color: var(--color-white-dim);
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+.pattern-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.pattern-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  color: var(--color-white-dim);
+  background: rgba(255, 255, 255, 0.018);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.trauma-panel {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-radius: 22px;
+  text-align: center;
+}
+
+.trauma-panel h2 {
+  margin: 0.85rem 0 1.1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.trauma-panel p:not(.eyebrow) {
+  color: var(--color-white-dim);
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+@media (max-width: 820px) {
+  .audience-grid,
+  .carrying-grid,
+  .pattern-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ============ SECTION HEADER ============ */
 .section-head {
   text-align: center;
