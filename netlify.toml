@@ -1,0 +1,31 @@
+[[redirects]]
+  from = "/apply"
+  to = "https://aura-enrollment-crm.netlify.app/apply"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/apply/*"
+  to = "https://aura-enrollment-crm.netlify.app/apply/:splat"
+  status = 200
+  force = true
+
+# The application remains hosted and maintained by Enrollment OS. Only its
+# public Next.js assets and application/booking APIs are exposed on this host.
+[[redirects]]
+  from = "/_next/*"
+  to = "https://aura-enrollment-crm.netlify.app/_next/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/apply/*"
+  to = "https://aura-enrollment-crm.netlify.app/api/apply/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/booking/*"
+  to = "https://aura-enrollment-crm.netlify.app/api/booking/:splat"
+  status = 200
+  force = true
