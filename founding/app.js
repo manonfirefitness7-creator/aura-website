@@ -1,4 +1,17 @@
-const services = ["Neuropsychology","Neurofeedback","Women's health","Hormone therapy","Fitness + performance","Fitness classes","Self defense","Spa + recovery","Facial aesthetics","Hair","Nails","AURA Kids","Coworking","Private business suites","Podcast / creative studios","AURA Nourish","Education","Community","AURA Live"];
+const services = [
+  {name:"AURA Rewire",description:"Neuropsychology • Neurofeedback • Brain + Pattern Work"},
+  {name:"AURA Health",description:"Women's Health • Hormone Therapy • Labs + Medical Services"},
+  {name:"AURA Performance",description:"Fitness Facility • Fitness Classes • Personal Training • Self Defense"},
+  {name:"AURA Recovery",description:"Spa • Recovery • Body Care"},
+  {name:"AURA Beauty",description:"Hair • Nails • Skin • Facial Aesthetics"},
+  {name:"AURA Daycare",description:"Childcare + Children's Programming"},
+  {name:"AURA Work",description:"Coworking • Workstations • Private Business Suites • Meeting Rooms"},
+  {name:"AURA Studios",description:"Podcast • Video • Content Creation Studios"},
+  {name:"AURA Café",description:"Healthy Food • Coffee • Smoothies • High Protein Options"},
+  {name:"AURA Stage",description:"300 Seat Venue • Live Conferences • Performances • Speakers • Events"},
+  {name:"AURA Grounds",description:"Outdoor Lounge • Outdoor Classes • Café Seating • Work + Community Space"},
+  {name:"AURA Concierge",description:"Member Check In • Scheduling • Facility Coordination"}
+];
 const groups = {
   travel_radius:["Under 15 minutes","15–30 minutes","30–45 minutes","45–60 minutes","60+ minutes"],
   visit_frequency:["Less than once per week","1–2 times per week","3–4 times per week","5+ times per week"],
@@ -12,9 +25,9 @@ const progress = [...document.querySelectorAll('.progress li')];
 const errorBox = document.querySelector('.form-error');
 let currentStep = 0;
 
-const makeChoice = (name, value, type='radio', className='choice') => `<label class="${className}"><input type="${type}" name="${name}" value="${value}" ${type==='radio'?'required':''}><span>${value}</span></label>`;
-document.querySelector('.service-options').innerHTML = services.map(v=>makeChoice('service_interests',v,'checkbox')).join('');
-document.querySelector('.top-options').innerHTML = services.map(v=>makeChoice('top_three_interests',v,'checkbox')).join('');
+const makeChoice = (name, value, type='radio', className='choice', description='') => `<label class="${className}"><input type="${type}" name="${name}" value="${value}" ${type==='radio'?'required':''}><span>${description?`<strong>${value}</strong><small>${description}</small>`:value}</span></label>`;
+document.querySelector('.service-options').innerHTML = services.map(v=>makeChoice('service_interests',v.name,'checkbox','choice service-choice',v.description)).join('');
+document.querySelector('.top-options').innerHTML = services.map(v=>makeChoice('top_three_interests',v.name,'checkbox','choice service-choice',v.description)).join('');
 document.querySelectorAll('[data-required-group]').forEach(el=>{const name=el.dataset.requiredGroup;const cls=name==='pricing_preference'?'price-choice':'choice';el.innerHTML=groups[name].map(v=>makeChoice(name,v,'radio',cls)).join('')});
 
 document.querySelector('.top-options').addEventListener('change', e=>{
