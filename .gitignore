@@ -1,0 +1,6 @@
+.netlify/
+dist/
+__pycache__/
+.env
+.env.*
+.DS_Store

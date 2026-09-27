@@ -1,3 +1,16 @@
+[build]
+  command = "python3 scripts/build.py"
+  publish = "dist"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+[[redirects]]
+  from = "/founding"
+  to = "/founding/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/apply"
   to = "https://aura-enrollment-crm.netlify.app/apply"
