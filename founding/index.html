@@ -42,9 +42,9 @@
     <section class="hero" id="top">
       <div class="hero-copy reveal">
         <p class="eyebrow">FRISCO / NORTH DALLAS</p>
-        <h1>WE'RE BUILDING<br /><em>AURA REWIRE.</em></h1>
+        <h1>WE’RE BUILDING<br /><em>AURA REWIRE.</em></h1>
+        <p class="lede">A 50,000 square foot, three level membership ecosystem created exclusively for women.</p>
         <p class="hero-line">EVERY PART OF HER.<br />ONE PLACE.</p>
-        <p class="lede">A proposed 50,000-square-foot, three-level membership ecosystem created exclusively for women.</p>
         <button class="button button-gold" data-open-form>JOIN THE FOUNDING WISH LIST <span>↗</span></button>
         <p class="micro">No payment required.</p>
       </div>
@@ -89,7 +89,7 @@
     <button class="dialog-close" aria-label="Close application">×</button>
     <div class="form-shell">
       <div class="form-header"><div class="wordmark"><span>A·U·R·A</span><small>FOUNDING WISH LIST</small></div><p id="form-title">HELP SHAPE WHAT COMES NEXT.</p></div>
-      <ol class="progress" aria-label="Application progress"><li class="active">ABOUT YOU</li><li>YOUR AURA</li><li>MEMBERSHIP</li><li>FOUNDING ACCESS</li></ol>
+      <ol class="progress" aria-label="Application progress"><li class="active">ABOUT YOU</li><li>YOUR AURA</li><li>MEMBERSHIP</li><li>YOUR VISION</li></ol>
       <form id="wishlist-form" novalidate>
         <section class="form-step active" data-step="0">
           <p class="eyebrow">STEP 01</p><h2>TELL US ABOUT <em>YOU.</em></h2>
@@ -111,14 +111,14 @@
           <fieldset><legend>Which monthly price would you realistically consider?</legend><div class="price-options" data-required-group="pricing_preference"></div><p class="form-note">Market-research price points only. These are not final AURA membership prices.</p></fieldset>
         </section>
         <section class="form-step" data-step="3">
-          <p class="eyebrow">STEP 04</p><h2>FOUNDING <em>ACCESS.</em></h2>
-          <fieldset><legend>How interested would you be in becoming a Founding Member?</legend><div class="choice-row" data-required-group="founding_interest"></div></fieldset>
-          <fieldset><legend>Would you want to be among the first invited?</legend><div class="choice-row" data-required-group="priority_access_interest"></div></fieldset>
+          <p class="eyebrow">STEP 04</p><h2>YOUR <em>VISION.</em></h2>
+          <input type="hidden" name="founding_interest" value="Founding Wish List signup" />
+          <input type="hidden" name="priority_access_interest" value="Founding Wish List signup" />
           <label>What would make AURA Rewire impossible for you to ignore? <small>Optional</small><textarea name="open_response" rows="4"></textarea></label>
           <label class="consent"><input type="checkbox" name="consent" required /> <span>I agree that AURA may contact me with development updates and future Founding Membership information.</span></label>
         </section>
         <div class="form-error" role="alert" aria-live="polite"></div>
-        <div class="form-actions"><button type="button" class="button-back">BACK</button><button type="button" class="button button-gold button-next">CONTINUE <span>→</span></button><button type="submit" class="button button-gold button-submit">JOIN THE WISH LIST <span>↗</span></button></div>
+        <div class="form-actions"><button type="button" class="button-back">BACK</button><button type="button" class="button button-gold button-next">CONTINUE <span>→</span></button><button type="submit" class="button button-gold button-submit">JOIN THE FOUNDING WISH LIST <span>↗</span></button></div>
       </form>
       <section class="success-state" aria-live="polite"><p class="eyebrow">AURA REWIRE</p><div class="success-mark">✓</div><h2>YOU'RE ON<br /><em>THE LIST.</em></h2><p>Thank you for helping us shape AURA Rewire. This is the beginning.</p><p>As the flagship develops, Founding Wish List members will be among the first to receive important updates and future Founding Membership information.</p><button class="button button-outline dialog-done">RETURN TO THE VISION</button></section>
     </div>

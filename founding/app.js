@@ -3,9 +3,7 @@ const groups = {
   travel_radius:["Under 15 minutes","15–30 minutes","30–45 minutes","45–60 minutes","60+ minutes"],
   visit_frequency:["Less than once per week","1–2 times per week","3–4 times per week","5+ times per week"],
   childcare_interest:["Yes","No","Not applicable"], coworking_interest:["Yes","No","Not applicable"],
-  pricing_preference:["$249/month","$399/month","$599/month","None of these"],
-  founding_interest:["Very interested","Interested","Maybe","Updates only"],
-  priority_access_interest:["Yes","Maybe","No"]
+  pricing_preference:["$249/month","$399/month","$599/month","None of these"]
 };
 const dialog = document.querySelector('#wishlist-dialog');
 const form = document.querySelector('#wishlist-form');
@@ -50,7 +48,7 @@ form.addEventListener('submit',async e=>{
     const response=await fetch(`${cfg.supabaseUrl.replace(/\/$/,'')}/rest/v1/rpc/submit_aura_rewire_wishlist`,{method:'POST',headers:{apikey:cfg.supabaseAnonKey,Authorization:`Bearer ${cfg.supabaseAnonKey}`,'Content-Type':'application/json'},body:JSON.stringify({payload:data})});
     if(!response.ok){const body=await response.json().catch(()=>({}));throw new Error(body.message||'We could not save your application. Please try again.')}
     form.style.display='none';document.querySelector('.progress').style.display='none';document.querySelector('.success-state').style.display='block';window.dataLayer?.push({event:'wishlist_submit'});
-  }catch(err){errorBox.textContent=err.message;submit.disabled=false;submit.firstChild.textContent='JOIN THE WISH LIST '}
+  }catch(err){errorBox.textContent=err.message;submit.disabled=false;submit.firstChild.textContent='JOIN THE FOUNDING WISH LIST '}
 });
 
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
