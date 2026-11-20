@@ -35,3 +35,12 @@
   .hero{display:grid;grid-template-columns:54% 46%;min-height:660px;height:100svh;max-height:780px;padding-bottom:0}.hero-image{position:absolute;top:0;right:0;width:52%;height:100%;min-height:0;background-position:55% 35%}.hero:after{z-index:1;background:linear-gradient(90deg,#090806 0%,rgba(9,8,6,.97) 42%,rgba(9,8,6,.68) 55%,rgba(9,8,6,.08) 76%),linear-gradient(0deg,#090806 0%,transparent 24%)}.hero-copy{position:relative;left:auto;bottom:auto;align-self:center;padding:105px 0 54px 6vw;max-width:none;width:100%}.hero h1{font-size:clamp(1.95rem,8.7vw,2.35rem);line-height:.94;margin:.55rem 0 .85rem;white-space:nowrap}.hero .eyebrow{font-size:.5rem;letter-spacing:.2em;white-space:nowrap}.hero .lede{max-width:185px;font-size:.67rem;line-height:1.45;margin:.7rem 0}.hero-line{font-size:.9rem;margin:1rem 0;line-height:1.12}.hero .button{width:182px;min-width:0;padding:.78rem .72rem;margin-top:.55rem;font-size:.48rem;letter-spacing:.1em}.hero .micro{font-size:.54rem;margin:.45rem 0 0}
   .founder-origin-minimal{padding:62px 6vw 82px}.founder-origin-minimal .founder-quote{font-size:2.55rem}
 }
+
+.faith-foundation{background:#0c0b09;border-top:1px solid var(--line)}
+.faith-foundation h2{max-width:1050px}
+.faith-copy{max-width:760px;margin:3rem 0 0 auto}
+.faith-copy blockquote{margin:0 0 1rem;font-family:var(--serif);font-size:clamp(1.8rem,3vw,3rem);line-height:1.2;color:var(--gold2)}
+.faith-copy .faith-reference{font-size:.8rem;color:var(--gold2);margin-bottom:2.5rem}
+.faith-copy>p{color:#bdb4a6}
+.faith-copy h3{margin:2.5rem 0 1rem;font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;line-height:1.15;color:var(--gold2)}
+@media(max-width:600px){.faith-copy{margin-top:2rem}}

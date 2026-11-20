@@ -8,7 +8,7 @@ const services = [
   {name:"AURA Work",description:"Coworking • Workstations • Private Business Suites • Meeting Rooms"},
   {name:"AURA Studios",description:"Podcast • Video • Content Creation Studios"},
   {name:"AURA Café",description:"Healthy Food • Coffee • Smoothies • High Protein Options"},
-  {name:"AURA Stage",description:"300 Seat Venue • Live Conferences • Performances • Speakers • Events"},
+  {name:"AURA Stage",description:"Christian Performances • Worship • Event Rentals"},
   {name:"AURA Grounds",description:"Outdoor Lounge • Outdoor Classes • Café Seating • Work + Community Space"},
   {name:"AURA Concierge",description:"Member Check In • Scheduling • Facility Coordination"}
 ];
